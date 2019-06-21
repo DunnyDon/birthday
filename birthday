@@ -1,22 +1,23 @@
 #!/usr/local/bin/python
 
-from datetime import date
+from datetime import date,datetime,time
 
-today = date.today()
+today = datetime.today().date()
 
-#Change this to your birth date
-date_of_birth = date(1995, 3, 25)
-
-birthday = date(today.year, date_of_birth.month, date_of_birth.day)
+date_of_birth = raw_input("Birthday (Please enter in the format of dd/mm/yyyy): ")
+format_str = '%d/%m/%Y' # The format
+birthday = datetime.strptime(date_of_birth, format_str).date()
 days_until_birthday = (birthday-today).days
-days_alive = (today-date_of_birth).days
+days_alive = (today-birthday).days
 
 print( 'You are ' + str(days_alive) + ' days old')
 
 if days_until_birthday > 0:
-	print( 'It\'s ' + str(days_until_birthday) + ' days until your Birthday')
+        print( 'It\'s ' + str(days_until_birthday) + ' days until your Birthday')
 elif days_until_birthday == 0:
-	print( 'Happy Birthday!')
+        print( 'Happy Birthday!')
 else:
-	print( 'You\'ll have to wait until next year for another birthday')
+        print( 'You\'ll have to wait until next year for another birthday')
 
+
+print('You pig')
